@@ -46,13 +46,11 @@ function playRound(playerSelect, computerSelection) {
 
 
 function game() {
-    for (let i = 0; i < 5; i++) {
         let rand = Math.floor(Math.random() * 3) + 1;
 
         console.log(playerSelect + " " + getComputerChoice(rand));
         return playRound(playerSelect, getComputerChoice(rand));
-       
-    }   
+     
     
 }
 
