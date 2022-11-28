@@ -1,3 +1,8 @@
+
+
+
+
+
 function getComputerChoice(rand) {
 
     if (rand == 1) {
@@ -15,11 +20,11 @@ let computerSelection = getComputerChoice();
 let compWin = 0;
 let playerWin = 0;
 
-const playerSelect = prompt();
+const playerSelect = "rock";
 
 function playRound(playerSelect, computerSelection) {
      if (playerSelect == "Rock".toLowerCase() && computerSelection == "Paper".toLowerCase()) {
-        console.log("You lose! Rock beats Paper!"); 
+        console.log("You lose! Paper beats Rock!"); 
         compWin++;
     } else if (playerSelect == "Paper".toLowerCase() && computerSelection == "Rock".toLowerCase()) {
         console.log("You win! Paper beats Rock!"); 
@@ -41,9 +46,6 @@ function playRound(playerSelect, computerSelection) {
     }
 
 }
-
-
-
 
 function game() {
         let rand = Math.floor(Math.random() * 3) + 1;
