@@ -7,26 +7,20 @@ function getComputerChoice(rand) {
     } else if (rand == 3) {
         return "Scissors".toLowerCase();
     }
-
 }
 
 let computerSelection = getComputerChoice();
-
 let compWin = 0;
 let playerWin = 0;
-let rand = Math.floor(Math.random() * 3) + 1;
+let select;
 
-let select = "";
-
+const buttons = document.querySelectorAll('button');
 
 const rock = document.querySelector('#rock');
 rock.addEventListener('click', () => {
     select = "rock";
     game(select);
-
-
 });
-
 
 const paper = document.querySelector('#paper');
 paper.addEventListener('click', () => {
@@ -40,13 +34,8 @@ scissors.addEventListener('click', () => {
     game(select);
 });
 
-
-
-
-
 function playRound(playerSelect, computerSelection) {
 
-    
     let result = "";
 
      if (playerSelect == "Rock".toLowerCase() && computerSelection == "Paper".toLowerCase()) {
@@ -74,36 +63,44 @@ function playRound(playerSelect, computerSelection) {
     } else {
         result = "Pick one!";
     }
-
     return result;
-
 }
-
-
 
 
 function game(playerSelect) {
 
+        
         let rand = Math.floor(Math.random() * 3) + 1;
 
-
-        const choice = document.querySelector('h2');
-        choice.textContent = "You chose " + playerSelect + ". Computer chose " + getComputerChoice(rand);
-
+        const choice = document.querySelector('#choice');
+        choice.classList.add('choice');
+        choice.textContent = "You chose " + playerSelect + ". The computer chose " + getComputerChoice(rand) + ".";
 
         const result = document.querySelector('h3');
         result.textContent = playRound(playerSelect, getComputerChoice(rand));
 
         const playerScore = document.querySelector('.playerScore');
         playerScore.classList.add('playerScore');
-        playerScore.textContent = "Player Score: " + playerWin;
+        playerScore.textContent = "Your Score: " + playerWin;
 
         const compScore = document.querySelector('.compScore');
         compScore.classList.add('compScore');
         compScore.textContent = "Computer Score: " + compWin;
-    
 
+        const winner = document.querySelector('.winner');
+        winner.classList.add('winner');
 
+        if (playerWin == 5) {
+            winner.textContent = "You won! Scores will go back to 0";
+            playerWin = 0;
+            compWin = 0;
+        } else if (compWin == 5) {
+            winner.textContent = "The computer wins! Scores will go back to 0"
+            playerWin = 0;
+            compWin = 0;
+        } else {
+            winner.textContent = "";
+        }
 
         
 }
