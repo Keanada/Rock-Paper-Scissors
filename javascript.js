@@ -41,12 +41,14 @@ scissors.addEventListener('click', () => {
 });
 
 
-let  playerSelect = scissors;
 
 
 
 function playRound(playerSelect, computerSelection) {
+
+    
     let result = "";
+
      if (playerSelect == "Rock".toLowerCase() && computerSelection == "Paper".toLowerCase()) {
         result = "You lose! Rock beats Paper!"; 
         compWin++;
@@ -73,6 +75,8 @@ function playRound(playerSelect, computerSelection) {
         result = "Pick one!";
     }
 
+    return result;
+
 }
 
 
@@ -81,13 +85,27 @@ function playRound(playerSelect, computerSelection) {
 function game(playerSelect) {
 
         let rand = Math.floor(Math.random() * 3) + 1;
-        console.log(playerSelect + ", " + getComputerChoice(rand));
+
 
         const choice = document.querySelector('h2');
         choice.textContent = "You chose " + playerSelect + ". Computer chose " + getComputerChoice(rand);
-        
+
+
         const result = document.querySelector('h3');
-        result.textContent = result;
+        result.textContent = playRound(playerSelect, getComputerChoice(rand));
+
+        const playerScore = document.querySelector('.playerScore');
+        playerScore.classList.add('playerScore');
+        playerScore.textContent = "Player Score: " + playerWin;
+
+        const compScore = document.querySelector('.compScore');
+        compScore.classList.add('compScore');
+        compScore.textContent = "Computer Score: " + compWin;
+    
+
+
+
+        
 }
 
 
