@@ -41,6 +41,7 @@ scissors.addEventListener('click', () => {
 });
 
 
+let  playerSelect = scissors;
 
 
 
@@ -80,18 +81,17 @@ function playRound(playerSelect, computerSelection) {
 }
 
 
-
-
 function game(playerSelect) {
 
         let rand = Math.floor(Math.random() * 3) + 1;
+        console.log(playerSelect + ", " + getComputerChoice(rand));
 
 
-        const choice = document.querySelector('h2');
+        const choice = document.querySelector('#choice');
         choice.textContent = "You chose " + playerSelect + ". Computer chose " + getComputerChoice(rand);
-
-
+        
         const result = document.querySelector('h3');
+        result.textContent = result;
         result.textContent = playRound(playerSelect, getComputerChoice(rand));
 
         const playerScore = document.querySelector('.playerScore');
@@ -101,23 +101,22 @@ function game(playerSelect) {
         const compScore = document.querySelector('.compScore');
         compScore.classList.add('compScore');
         compScore.textContent = "Computer Score: " + compWin;
+
+        const winner = document.querySelector('.winner');
+        if (playerWin == 5) {
+            winner.textContent = "You win! Scores will reset to 0";
+            playerWin = 0;
+            compWin = 0;
+        } else if (compWin == 5) {
+            winner.textContent = "The computer wins! Scores will reset to 0";
+            playerWin = 0;
+            compWin = 0;
+        } else {
+            winner.textContent = " ";
+        }
     
 
 
 
         
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
